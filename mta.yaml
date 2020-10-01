@@ -1,0 +1,81 @@
+_schema-version: "3.2"
+ID: ScannerAppProject
+version: 0.0.1
+modules:
+- name: ScannerAppProject-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: uaa_ScannerAppProject
+    parameters:
+      service-key:
+        name: uaa_ScannerAppProject-key
+  - name: ScannerAppProject_html_repo_host
+    parameters:
+      service-key:
+        name: ScannerAppProject_html_repo_host-key
+  - name: ScannerAppProject-destination-service
+    parameters:
+      content-target: true
+  parameters:
+    content:
+      subaccount:
+        destinations:
+        - Name: be_wl_scannerapp_ScannerAppProject_html_repo_host
+          ServiceInstanceName: ScannerAppProject-html5-app-host-service
+          ServiceKeyName: ScannerAppProject_html_repo_host-key
+          sap.cloud.service: be.wl.scannerapp
+        - Authentication: OAuth2UserTokenExchange
+          Name: be_wl_scannerapp_uaa_ScannerAppProject
+          ServiceInstanceName: ScannerAppProject-xsuaa-service
+          ServiceKeyName: uaa_ScannerAppProject-key
+          sap.cloud.service: be.wl.scannerapp
+        existing_destinations_policy: update
+  build-parameters:
+    no-source: true
+- name: ScannerAppProject_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: ScannerAppProject_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - ScannerApp-content.zip
+      name: ScannerApp
+      target-path: resources/
+- name: ScannerApp
+  type: html5
+  path: ScannerApp
+  build-parameters:
+    builder: custom
+    commands:
+    - npm run build
+    supported-platforms: []
+resources:
+- name: ScannerAppProject-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: destination
+    service-name: ScannerAppProject-destination-service
+    service-plan: lite
+- name: ScannerAppProject_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: ScannerAppProject-html5-app-host-service
+    service-plan: app-host
+- name: uaa_ScannerAppProject
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: ScannerAppProject-xsuaa-service
+    service-plan: application
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm install
