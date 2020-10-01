@@ -13,8 +13,11 @@ sap.ui.define([
 			onInit: function () {
                 this.getView().setModel(new JSONModel({QRCode:""}),"ui")
             },
-            onQRCodeScanned:function(){
-                MessageToast.show("Scanned QRCode: "+ this.getView().getModel("ui").getProperty("QRCode"));
+            onQRCodeScanned:function(event){
+                //qr code from event
+                console.log(event.getParameter("value"));
+                //or use binding
+                MessageToast.show("Scanned QRCode: "+ this.getView().getModel("ui").getProperty("/QRCode"));
             }
 		});
 	});

@@ -4,7 +4,7 @@
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
-					<content><x:QRScanner QRCodeScanned=".onQRCodeScanned" value="{scan>/QRCode}" /></content>
+					<content><x:QRScanner QRCodeScanned=".onQRCodeScanned" value="{ui>/QRCode}" /></content>
 				</Page>
 			</pages>
 		</App>

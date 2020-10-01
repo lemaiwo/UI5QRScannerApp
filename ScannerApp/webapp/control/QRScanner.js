@@ -1,4 +1,4 @@
-sap.ui.define(["sap/ui/core/Control", "sap/m/Select", "sap/ui/core/Item","sap/m/Switch","sap/m/Toolbar"], function (Control, Select, Item,Switch,Toolbar) {
+sap.ui.define(["sap/ui/core/Control", "sap/m/Select", "sap/ui/core/Item", "sap/m/Switch", "sap/m/Toolbar"], function (Control, Select, Item, Switch, Toolbar) {
     "use strict";
     return Control.extend("be.wl.ScannerApp.control.QRScanner", {
         "metadata": {
@@ -23,19 +23,21 @@ sap.ui.define(["sap/ui/core/Control", "sap/m/Select", "sap/ui/core/Item","sap/m/
             }
         },
         init: function () {
-            this._cameraSelection = new Select({change:this.onChangeCamera.bind(this)});
-            this._mirrorSwitch = new Switch({state:false,change:this.onChangeMirror.bind(this)});
-            this.setAggregation("_toolbar", new Toolbar({content:[this._cameraSelection,this._mirrorSwitch]}));
+            this._cameraSelection = new Select({ change: this.onChangeCamera.bind(this) });
+            this._mirrorSwitch = new Switch({ state: false, change: this.onChangeMirror.bind(this) });
+            this.setAggregation("_toolbar", new Toolbar({ content: [this._cameraSelection, this._mirrorSwitch] }));
         },
         onAfterRendering: function (evt) {
             this.scanner = new Instascan.Scanner({
                 video: this.getDomRef().lastElementChild,
-                mirror:false
+                mirror: false
             });
-            this.scanner.addListener('scan', (qrcode) => this.onQRCodeScanned(qrcode));
+            this.scanner.addListener('scan', function(qrcode){ 
+                this.onQRCodeScanned(qrcode);
+            }.bind(this));
             Instascan.Camera.getCameras().then(function (cameras) {
-                this.cameras=cameras;
-                cameras.forEach(function (camera,key) {
+                this.cameras = cameras;
+                cameras.forEach(function (camera, key) {
                     this._cameraSelection.addItem(new Item({ key: key, text: camera.name }));
                 }.bind(this))
                 if (cameras.length > 0) {
@@ -55,10 +57,10 @@ sap.ui.define(["sap/ui/core/Control", "sap/m/Select", "sap/ui/core/Item","sap/m/
                 value: qrcode
             });
         },
-        onChangeCamera:function(event){
+        onChangeCamera: function (event) {
             this.scanner.start(this.cameras[event.getParameter("selectedItem").getKey()]);
         },
-        onChangeMirror:function(event){
+        onChangeMirror: function (event) {
             this.scanner.mirror = event.getParameter("state");
         }
     });
