@@ -1,6 +1,6 @@
-sap.ui.define(["sap/ui/core/Control", "sap/m/Select", "sap/ui/core/Item", "sap/m/Switch", "sap/m/Toolbar"], function (Control, Select, Item, Switch, Toolbar) {
+sap.ui.define(["sap/ui/core/Control", "sap/m/Select", "sap/ui/core/Item", "sap/m/Switch", "sap/m/Toolbar","../libs/instascan.min","../libs/adapter"], function (Control, Select, Item, Switch, Toolbar,instaLibrary,adapterLibrary) {
     "use strict";
-    return Control.extend("be.wl.ScannerApp.control.QRScanner", {
+    return Control.extend("be.wl.ScannerAppLibrary.controls.QRScanner", {
         "metadata": {
             "properties": {
                 value: 'string'

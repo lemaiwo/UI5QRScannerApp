@@ -1,3 +1,11 @@
+if(location.host.indexOf("studio")>-1){
+    //to make it work in app studio
+    sap.ui.getCore().loadLibrary("be.wl.ScannerAppLibrary", "/bewlScannerAppLibrary/be/wl/ScannerAppLibrary");
+}else{
+    //to make it work in central approuter
+    sap.ui.getCore().loadLibrary("be.wl.ScannerAppLibrary", "/bewlscannerapp.bewlScannerAppLibrary/resources/be/wl/ScannerAppLibrary");
+}
+
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",

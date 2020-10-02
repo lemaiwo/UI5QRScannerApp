@@ -46,9 +46,21 @@ modules:
       - ScannerApp-content.zip
       name: ScannerApp
       target-path: resources/
+    - artifacts:
+      - ScannerAppLibrary-content.zip
+      name: ScannerAppLibrary
+      target-path: resources/
 - name: ScannerApp
   type: html5
   path: ScannerApp
+  build-parameters:
+    builder: custom
+    commands:
+    - npm run build
+    supported-platforms: []
+- name: ScannerAppLibrary
+  type: html5
+  path: ScannerAppLibrary
   build-parameters:
     builder: custom
     commands:

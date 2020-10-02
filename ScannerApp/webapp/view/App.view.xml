@@ -1,5 +1,5 @@
 <mvc:View controllerName="be.wl.ScannerApp.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
-    xmlns:x="be.wl.ScannerApp.control">
+    xmlns:x="be.wl.ScannerAppLibrary.controls">
 	<Shell id="shell">
 		<App id="app">
 			<pages>

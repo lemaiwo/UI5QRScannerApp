@@ -70,15 +70,7 @@
 		"resources": {
 			"css": [{
 				"uri": "css/style.css"
-			}],
-			"js": [
-				{
-					"uri": "libs/adapter.js"
-				},
-				{
-					"uri": "libs/instascan.min.js"
-				}
-			]
+			}]
 		},
 		"routing": {
 			"config": {
