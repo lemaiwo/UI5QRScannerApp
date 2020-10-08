@@ -19,7 +19,7 @@
 	
 	"sap.cloud": {
 		"public": true,
-		"service": "be.wl.scannerapp"
+		"service": "be.wl.scanner"
 	},
 	
 	"sap.ui": {

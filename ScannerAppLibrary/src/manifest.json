@@ -13,7 +13,7 @@
   },
   "sap.cloud": {
     "public": true,
-    "service": "be.wl.ScannerAppLibrary"
+    "service": "be.wl.scanner"
   },
   "sap.ui": {
     "technology": "UI5",
