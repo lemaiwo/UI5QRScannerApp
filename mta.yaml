@@ -23,12 +23,12 @@ modules:
         - Name: be_wl_scannerapp_ScannerAppProject_html_repo_host
           ServiceInstanceName: ScannerAppProject-html5-app-host-service
           ServiceKeyName: ScannerAppProject_html_repo_host-key
-          sap.cloud.service: be.wl.scannerapp
+          sap.cloud.service: be.wl.scanner
         - Authentication: OAuth2UserTokenExchange
           Name: be_wl_scannerapp_uaa_ScannerAppProject
           ServiceInstanceName: ScannerAppProject-xsuaa-service
           ServiceKeyName: uaa_ScannerAppProject-key
-          sap.cloud.service: be.wl.scannerapp
+          sap.cloud.service: be.wl.scanner
         existing_destinations_policy: update
   build-parameters:
     no-source: true
