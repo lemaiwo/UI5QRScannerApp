@@ -9,8 +9,10 @@
         "rimraf": "3.0.2"
     },
     "scripts": {
-        "build": "npm run clean && ui5 build --include-task=generateManifestBundle generateCachebusterInfo && cp ./xs-app.json dist && cp ./src/manifest.json dist && npm run zip",
+        "build": "npm run clean && ui5 build --include-task=generateManifestBundle generateCachebusterInfo && npm run flatten && npm run clean-after-flatten && cp ./xs-app.json dist  && npm run zip",
         "zip": "cd dist && npx bestzip ../ScannerAppLibrary-content.zip *",
-        "clean": "npx rimraf ScannerAppLibrary-content.zip dist"
+        "flatten": "cp -r dist/resources/be/wl/ScannerAppLibrary/* dist && cp dist/resources/be/wl/ScannerAppLibrary/.library dist ",
+        "clean": "npx rimraf ScannerAppLibrary-content.zip dist",
+        "clean-after-flatten": "rm -rf dist/resources dist/test-resources"
     }
 }
