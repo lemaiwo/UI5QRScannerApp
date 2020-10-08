@@ -3,3 +3,6 @@ package-lock.json
 /dist/
 /.vscode/
 /*-content.zip/ 
+
+# auto generated wildcard
+LibraryDemoApp/DemoApp/.env2

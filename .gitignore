@@ -1,3 +1,6 @@
 /mta_archives/
 /node_modules/
 /resources/
+
+# auto generated wildcard
+LibraryDemoApp/DemoApp/.env2
