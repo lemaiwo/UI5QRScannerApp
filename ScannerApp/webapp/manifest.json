@@ -52,7 +52,11 @@
 			"libs": {
 				"sap.ui.core": {},
 				"sap.m": {},
+<<<<<<< Updated upstream
 				"sap.ui.layout": {}
+=======
+                "sap.ui.layout": {}
+>>>>>>> Stashed changes
 			}
 		},
 		"contentDensities": {

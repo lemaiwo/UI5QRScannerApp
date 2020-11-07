@@ -5,4 +5,14 @@ package-lock.json
 /*-content.zip/ 
 
 # auto generated wildcard
+<<<<<<< Updated upstream
 LibraryDemoApp/DemoApp/.env2
+=======
+CFUI5ExampleApp/ExampleApp/.env2
+# auto generated wildcard
+CFUI5ExampleApp/ExampleApp/.env3
+# auto generated wildcard
+CFUI5ExampleApp/ExampleApp/.env
+# auto generated wildcard
+ScannerAppProject/ScannerApp/.env1
+>>>>>>> Stashed changes
